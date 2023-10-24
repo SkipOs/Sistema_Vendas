@@ -118,8 +118,7 @@ Selecione uma opção: ");
             Console.Clear();
             Cliente cliente = new Cliente();
 
-            // Recebe nova instâncoa de cliente
-
+            // Recebe nova instância de cliente
             Console.Write("Código do Cliente: ");
             cliente.Codigo = int.Parse(Console.ReadLine());
 
@@ -157,7 +156,7 @@ Selecione uma opção: ");
             }
             else
             {
-                Console.WriteLine("Cliente não encontrado.")
+                Console.WriteLine("Cliente não encontrado.");
             }
         }
 
