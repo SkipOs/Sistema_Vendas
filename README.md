@@ -6,6 +6,3 @@ Realizado pelos alunos
 - Eduardo Henrique Alves Martins
 - Admir Gregório
 - Guilherme Vieira da Silva
-
-Sob a Orientação do professor
-- Antônio Dourado
