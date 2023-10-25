@@ -449,7 +449,7 @@ Selecione uma opção: ");
             Console.WriteLine("Deseja buscar outra venda? (1 para sim): ");
             if (Sequestro() == 1)
             {
-                BuscaProduto();
+                BuscaVenda();
             }
         }
         static void ListarVenda()
