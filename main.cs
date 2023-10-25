@@ -363,7 +363,6 @@ Selecione uma opção: ");
                 else
                 {
                     Console.WriteLine("\nNão é possível remover o produto.\n");
-
                 }
             }
             else
@@ -375,49 +374,57 @@ Selecione uma opção: ");
         // Vendas ==============================================================
         static void CadastroVenda()
         {
+            Console.Clear();
             Venda venda = new Venda(); // Instancia novavenda
-
-            venda.Codigo = CodigoVenda; // Recebe código da venda da variável global
-            CodigoVenda++; // Incrementa a bendita da variável global (Não me mata Dourado)
 
             Console.Write("Código do Cliente: ");
             venda.CodigoCliente = Sequestro();
 
-            // Recepção da lista de produtos dessa venda instanciada
-            venda.l_CodigoProdutos = new List<int>();
-
-            while (true)
+            if (l_clientes.Exists(x => x.Codigo == venda.CodigoCliente))
             {
-                ///Recepção
-                Console.WriteLine("Insira o código do produto (0 para encerrar): ");
-                int temp_Produto = Sequestro();
+                venda.Codigo = CodigoVenda; // Recebe código da venda da variável global
+                CodigoVenda++; // Incrementa a bendita da variável global (Não me mata Dourado)
 
-                //Saída
-                if (temp_Produto == 0)
-                    break;
+                // Recepção da lista de produtos dessa venda instanciada
+                venda.l_CodigoProdutos = new List<int>();
 
-                if (l_produtos.Exists(x => x.Codigo == temp_Produto))   // Verificação 
+                while (true)
                 {
-                    venda.l_CodigoProdutos.Add(temp_Produto);   // Adição do valor à lista (referência linha 387 e 393)
+                    ///Recepção
+                    Console.WriteLine("Insira o código do produto (0 para encerrar): ");
+                    int temp_Produto = Sequestro();
+
+                    //Saída
+                    if (temp_Produto == 0)
+                        break;
+
+                    if (l_produtos.Exists(x => x.Codigo == temp_Produto))   // Verificação 
+                    {
+                        venda.l_CodigoProdutos.Add(temp_Produto);   // Adição do valor à lista (referência linha 387 e 393)
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nProduto não encontrado.\n");
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("\nProduto não encontrado.\n");
-                }
+
+                // Calculo de valor total da venda
+
+                /// foreach (var c_produto in venda.l_CodigoProdutos)
+                ///{
+                ///    Produto produto = l_produtos.Find(x => x.Codigo == c_produto);
+                ///    venda.ValorVenda += produto.Valor;
+                ///}
+                /// Console.WriteLine($"Valor total da venda: R$ {venda.ValorVenda}\n");
+
+                // Adiciona a nova venda à lista de vendas
+                l_vendas.Add(venda);
+                Console.WriteLine("\nVenda cadastrada.\n");
             }
-
-            // Calculo de valor total da venda
-
-            /// foreach (var c_produto in venda.l_CodigoProdutos)
-            ///{
-            ///    Produto produto = l_produtos.Find(x => x.Codigo == c_produto);
-            ///    venda.ValorVenda += produto.Valor;
-            ///}
-            /// Console.WriteLine($"Valor total da venda: R$ {venda.ValorVenda}\n");
-
-            // Adiciona a nova venda à lista de vendas
-            l_vendas.Add(venda);
-            Console.WriteLine("Venda cadastrada.\n");
+            else
+            {
+                Console.WriteLine("\nCliente não encontrado.\n");
+            }
         }
         static void BuscaVenda()
         {
