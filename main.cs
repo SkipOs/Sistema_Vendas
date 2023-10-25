@@ -385,6 +385,15 @@ Selecione uma opção: ");
                 venda.Codigo = CodigoVenda; // Recebe código da venda da variável global
                 CodigoVenda++; // Incrementa a bendita da variável global (Não me mata Dourado)
 
+                if(l_vendas == null)
+                {
+                    venda.Codigo = 1;
+                }
+                else
+                {
+
+                }
+
                 // Recepção da lista de produtos dessa venda instanciada
                 venda.l_CodigoProdutos = new List<int>();
 
