@@ -30,7 +30,7 @@ namespace Sistemavenda
         public int Codigo { get; set; }
         public int CodigoCliente { get; set; }
         public List<int> l_CodigoProdutos { get; set; }
-        public float ValorVenda { get; set; }
+        ///public float ValorVenda { get; set; }
     }
 
     // Programa/Main
@@ -42,7 +42,7 @@ namespace Sistemavenda
         static List<Venda> l_vendas = new List<Venda>();
 
         // Valor de incrementação de vendas
-        static int CodigoVenda = 0;
+        static int CodigoVenda = 1;
 
         static void Main(string[] args)
         {
@@ -407,12 +407,13 @@ Selecione uma opção: ");
             }
 
             // Calculo de valor total da venda
-            foreach (var c_produto in venda.l_CodigoProdutos)
-            {
-                Produto produto = l_produtos.Find(x => x.Codigo == c_produto);
-                venda.ValorVenda += produto.Valor;
-            }
-            Console.WriteLine($"Valor total da venda: R$ {venda.ValorVenda}\n");
+
+            /// foreach (var c_produto in venda.l_CodigoProdutos)
+            ///{
+            ///    Produto produto = l_produtos.Find(x => x.Codigo == c_produto);
+            ///    venda.ValorVenda += produto.Valor;
+            ///}
+            /// Console.WriteLine($"Valor total da venda: R$ {venda.ValorVenda}\n");
 
             // Adiciona a nova venda à lista de vendas
             l_vendas.Add(venda);
@@ -458,13 +459,17 @@ Selecione uma opção: ");
             Console.WriteLine("Lista de vendas realizadas até o momento: ");
             foreach (var venda in l_vendas)
             {
-                Console.WriteLine($"{venda.Codigo} - R$ {venda.ValorVenda}");
+                Console.WriteLine($"{venda.Codigo} - Cliente:{venda.CodigoCliente}");
             }
         }
         static void TotalVendas(float Vtotal)
         {
             foreach(var venda in l_vendas){
-                Vtotal += venda.ValorVenda;
+                foreach(var produto in venda.l_CodigoProdutos)
+                {
+                    Produto T_produto = l_produtos.Find(x => x.Codigo == produto);
+                    Vtotal += T_produto.Valor;
+                }
             }
         Console.WriteLine($"Valor total das vendas: R$ {Vtotal}\n");
         }
