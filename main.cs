@@ -286,7 +286,7 @@ Selecione uma opção: ");
             Console.Write("Descrição do Produto: ");
             produto.Descricao = Console.ReadLine();
 
-            Console.Write("Descrição do Produto: ");
+            Console.Write("Valor do Produto: ");
             produto.Valor = SequestroFloat();
 
             // Instancia o novo cliente recebido
