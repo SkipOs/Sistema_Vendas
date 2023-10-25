@@ -382,8 +382,8 @@ Selecione uma opção: ");
 
             if (l_clientes.Exists(x => x.Codigo == venda.CodigoCliente))
             {
-                venda.Codigo = CodigoVenda; // Recebe código da venda da variável global
-                CodigoVenda++; // Incrementa a bendita da variável global (Não me mata Dourado)
+                ///venda.Codigo = CodigoVenda; // Recebe código da venda da variável global
+                ///CodigoVenda++; // Incrementa a bendita da variável global (Não me mata Dourado)
 
                 if(l_vendas == null)
                 {
@@ -391,7 +391,7 @@ Selecione uma opção: ");
                 }
                 else
                 {
-
+                    venda.Codigo = (l_vendas.Count + 1);
                 }
 
                 // Recepção da lista de produtos dessa venda instanciada
@@ -438,7 +438,7 @@ Selecione uma opção: ");
         static void BuscaVenda()
         {
             Console.Clear();
-            Console.WriteLine("Informe o código do Produto: ");
+            Console.WriteLine("Informe o código da Venda: ");
             int c_venda = Sequestro();
 
             // Busca o cliente na lista
@@ -480,7 +480,8 @@ Selecione uma opção: ");
         }
         static void TotalVendas(float Vtotal)
         {
-            foreach(var venda in l_vendas){
+            Console.Clear();
+            foreach (var venda in l_vendas){
                 foreach(var produto in venda.l_CodigoProdutos)
                 {
                     Produto T_produto = l_produtos.Find(x => x.Codigo == produto);
