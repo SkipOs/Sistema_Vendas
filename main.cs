@@ -234,18 +234,11 @@ Selecione uma opção: ");
         static void ListaClientes()
         {
             Console.Clear();
-            if (l_clientes == null)
+            foreach (var cliente in l_clientes)
             {
-                Console.WriteLine("\n Nenhum cliente existente.");
+                Console.WriteLine($"{cliente.Codigo} - {cliente.Nome}");
             }
-            else
-            {
-                foreach (var cliente in l_clientes)
-                {
-                    Console.WriteLine($"{cliente.Codigo} - {cliente.Nome}");
-                }
-                Console.WriteLine("\n");
-            }
+            Console.WriteLine("\n");
         }
 
         //Verificação da existência do cliente em alguma venda
@@ -355,18 +348,11 @@ Selecione uma opção: ");
         static void ListaProduto()
         {
             Console.Clear();
-            if (l_produtos == null)
+            foreach (var produto in l_produtos)
             {
-                Console.WriteLine("\n Nenhum Produto existente.");
+                Console.WriteLine($"{produto.Codigo} - {produto.Modelo}({produto.Marca}) R${produto.Valor}");
             }
-            else
-            {
-                foreach (var produto in l_produtos)
-                {
-                    Console.WriteLine($"{produto.Codigo} - {produto.Modelo}({produto.Marca}) R${produto.Valor}");
-                }
-                Console.WriteLine("\n");
-            }
+            Console.WriteLine("\n");
         }
 
         //Verificação da existência do produto em alguma venda
@@ -502,21 +488,13 @@ Selecione uma opção: ");
         static void ListarVenda()
         {
             Console.Clear();
-            if (l_clientes == null)
+            Console.WriteLine("Lista de vendas realizadas até o momento: ");
+            foreach (var venda in l_vendas)
             {
-                Console.WriteLine("\n Nenhuma venda existente.");
-            }
-            else
-            {
-                Console.WriteLine("Lista de vendas realizadas até o momento: ");
-                foreach (var venda in l_vendas)
-                {
-                    Console.WriteLine($"{venda.Codigo} - Cliente:{venda.CodigoCliente}");
-                }
+                Console.WriteLine($"{venda.Codigo} - Cliente:{venda.CodigoCliente}");
             }
         }
-
-            static void TotalVendas(float Vtotal)
+        static void TotalVendas(float Vtotal)
         {
             Console.Clear();
             foreach (var venda in l_vendas){
