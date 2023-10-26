@@ -177,19 +177,26 @@ Selecione uma opção: ");
             Console.Write("Código do Cliente: ");
             cliente.Codigo = Sequestro();
 
-            Console.Write("Nome do Cliente: ");
-            cliente.Nome = Console.ReadLine();
+            if (l_clientes.Exists(x => x.Codigo == cliente.Codigo))
+            {
+                Console.WriteLine("Código de cliente já utilizado.\n");
+            }
+            else { 
+                Console.Write("Nome do Cliente: ");
+                cliente.Nome = Console.ReadLine();
 
-            Console.Write("Idade do Cliente: ");
-            cliente.Idade = Sequestro();
+                Console.Write("Idade do Cliente: ");
+                cliente.Idade = Sequestro();
 
-            Console.Write("CPF do Cliente: ");
-            cliente.CPF = Console.ReadLine();
+                Console.Write("CPF do Cliente: ");
+                cliente.CPF = Console.ReadLine();
 
-            // Instancia o novo cliente recebido e o adiciona à lista de clientes existentes
-            Console.Clear();
-            l_clientes.Add(cliente);
-            Console.WriteLine("Cliente Cadastrado com SUCESSO!\n");
+                // Instancia o novo cliente recebido e o adiciona à lista de clientes existentes
+                Console.Clear();
+                l_clientes.Add(cliente);
+                Console.WriteLine("Cliente Cadastrado com SUCESSO!\n"); 
+            }
+
             Console.WriteLine("Deseja inserir novo cliente? (1 para sim): ");
             if(Sequestro() == 1)
             {
@@ -273,26 +280,35 @@ Selecione uma opção: ");
             Console.Clear();
             Produto produto = new Produto();
 
+
             // Recebe nova instância de cliente
             Console.Write("Código do Produto: ");
             produto.Codigo = Sequestro();
 
-            Console.Write("Marca do Produto: ");
-            produto.Marca = Console.ReadLine();
+            if (l_produtos.Exists(x => x.Codigo == produto.Codigo))
+            {
+                Console.WriteLine("Código de produto já utilizado.\n");
+            }
+            else
+            {
+                Console.Write("Marca do Produto: ");
+                produto.Marca = Console.ReadLine();
 
-            Console.Write("Modelo do Produto: ");
-            produto.Modelo = Console.ReadLine();
+                Console.Write("Modelo do Produto: ");
+                produto.Modelo = Console.ReadLine();
 
-            Console.Write("Descrição do Produto: ");
-            produto.Descricao = Console.ReadLine();
+                Console.Write("Descrição do Produto: ");
+                produto.Descricao = Console.ReadLine();
 
-            Console.Write("Valor do Produto: ");
-            produto.Valor = SequestroFloat();
+                Console.Write("Valor do Produto: ");
+                produto.Valor = SequestroFloat();
 
-            // Instancia o novo cliente recebido
-            Console.Clear();
-            l_produtos.Add(produto);
-            Console.WriteLine("Produto Cadastrado com SUCESSO!\n");
+                // Instancia o novo cliente recebido
+                Console.Clear();
+                l_produtos.Add(produto);
+                Console.WriteLine("Produto Cadastrado com SUCESSO!\n");
+            }
+
             Console.WriteLine("Deseja inserir novo produto? (1 para sim): ");
             if (Sequestro() == 1)
             {
